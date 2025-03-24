@@ -22,7 +22,7 @@
 <h2 align="center">⚔️ Developer Level Status</h2>
 
 <p align="center">
-  <img src="solo-leveling-stats.svg" width="100%" alt="Developer Leveling Stats" />
+  <img src="solo-leveling-stats.svg" width="100%" alt="Solo Leveling RPG Stats" />
 </p>
 
 <hr>
@@ -75,5 +75,5 @@
 <hr>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=100&section=footer&text=The%20Only%20Limit%20is%20the%20One%20You%20Set&fontSize=24&fontColor=D2DFEB&animation=fadeIn" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=100&section=footer&text=The%20Only%20Limit%20is%20the%20One%20You%20Set.&fontSize=24&fontColor=D2DFEB" width="100%" />
 </p>
