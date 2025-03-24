@@ -6,15 +6,6 @@
   <i>"Arise! Just like Sung Jin-Woo, I level up with every commit. Constantly improving, adapting, and evolving in the world of AI, Game Dev, and Data Science."</i> 🔥
 </p>
 
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=200&section=header&text=Varun%20Singh&fontSize=60&fontColor=D2DFEB&animation=fadeIn&fontAlignY=30&desc=The%20Solo%20Coder&descAlignY=50&descSize=20" width="100%" />
-</p>
-
-<p align="center">
-  <i>"Arise! Just like Sung Jin-Woo, I level up with every commit. Constantly improving, adapting, and evolving in the world of AI, Game Dev, and Data Science."</i> 🔥
-</p>
-
 <hr>
 
 <h2 align="center">🛠️ Tech Stack</h2>
