@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=200&section=header&text=Varun%20Singh&fontSize=60&fontColor=D2DFEB&animation=fadeIn&fontAlignY=30&desc=The%20Solo%20Coder&descAlignY=50&descSize=20" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=200&section=header&text=Varun%20Singh&fontSize=60&fontColor=D2DFEB&animation=fadeIn&fontAlignY=30&desc=Digital%20Alchemist%20|%20AI%20%26%20Game%20Dev&descAlignY=50&descSize=20" width="100%" />
 </p>
 
 <p align="center">
-  <i>"Arise! Just like Sung Jin-Woo, I level up with every commit. Constantly improving, adapting, and evolving in the world of AI, Game Dev, and Data Science."</i> 🔥
+  <i>"Transforming data into intelligence, ideas into games, and code into innovation—one level at a time."</i> 🔥
 </p>
 
 <hr>
@@ -19,10 +19,10 @@
 
 <hr>
 
-<h2 align="center">⚔️ Stats Window</h2>
+<h2 align="center">⚔️ Developer Level Status</h2>
 
 <p align="center">
-  <img src="solo-leveling-stats.svg" width="100%" alt="Solo Leveling RPG Stats" />
+  <img src="solo-leveling-stats.svg" width="100%" alt="Developer Leveling Stats" />
 </p>
 
 <hr>
@@ -63,10 +63,6 @@
 <h2 align="center">📬 Contact Me</h2>
 
 <p align="center">
-  <a href="https://instagram.com/yourusername">
-    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white&color=040509" alt="Instagram" />
-  </a>
-  &nbsp;&nbsp;
   <a href="https://linkedin.com/in/yourusername">
     <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white&color=040509" alt="LinkedIn" />
   </a>
