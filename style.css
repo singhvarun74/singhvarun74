@@ -1,61 +1,47 @@
-/* Iron Man Themed GitHub Profile CSS */
-
-/* Import futuristic font */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #0c0c0c;
-    color: #00eaff;
-    text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0c0c0c;
+  color: #00eaff;
+  text-align: center;
 }
 
 h1 {
-    font-size: 2.5rem;
-    text-shadow: 0px 0px 10px #00eaff;
-    animation: glowText 1.5s infinite alternate;
+  font-size: 2.5rem;
+  text-shadow: 0px 0px 10px #00eaff;
+  animation: glowText 1.5s infinite alternate;
 }
 
 @keyframes glowText {
-    from {
-        text-shadow: 0px 0px 10px #00eaff;
-    }
-    to {
-        text-shadow: 0px 0px 20px #ff004c;
-    }
+  from { text-shadow: 0px 0px 10px #00eaff; }
+  to { text-shadow: 0px 0px 20px #ff004c; }
 }
 
-/* Animated hover effects */
 .profile-links a {
-    color: #00eaff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+  color: #00eaff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .profile-links a:hover {
-    color: #ff004c;
-    text-shadow: 0px 0px 10px #ff004c;
+  color: #ff004c;
+  text-shadow: 0px 0px 10px #ff004c;
 }
 
-/* Custom cursor effect */
 body {
-    cursor: url('https://your-cursor-url.com/cursor.png'), auto;
+  cursor: url('https://your-cursor-url.com/cursor.png'), auto;
 }
 
-/* HUD Animation */
 .hud {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    animation: rotateHud 6s linear infinite;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  animation: rotateHud 6s linear infinite;
 }
 
 @keyframes rotateHud {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

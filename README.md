@@ -27,8 +27,6 @@
   <a href="mailto:youremail@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
 </p>
 
----
-
 ## 🎵 Jarvis AI Music Player  
 <p align="center">
   <audio controls>
@@ -37,43 +35,5 @@
   </audio>
 </p>
 
----
-
-## 💻 Custom Styling (CSS)
-Create a file `style.css` and add the following:
-
-```css
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: black;
-    color: cyan;
-}
-
-img:hover {
-    filter: drop-shadow(0px 0px 20px red);
-    transform: scale(1.1);
-    transition: 0.3s;
-}
-```
-
----
-
-## 🧠 Jarvis-Style AI Text Animation
-Create a file `script.js` and add the following:
-
-```js
-document.addEventListener("DOMContentLoaded", function () {
-    let text = document.querySelector(".animated-text");
-    text.innerHTML = text.innerText.split("").map(
-        (letter, i) => `<span style="animation-delay:${i * 50}ms">${letter}</span>`
-    ).join("");
-});
-```
-
----
-
-🔥 **Now your GitHub profile will look like Tony Stark's personal dashboard!** 🚀
-<link rel="stylesheet" href="https://your-github-username.github.io/repository-name/style.css">
-<script src="https://your-github-username.github.io/repository-name/script.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
