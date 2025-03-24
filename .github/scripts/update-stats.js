@@ -2,64 +2,39 @@ const axios = require('axios');
 const fs = require('fs-extra');
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const USERNAME = process.env.USERNAME;
+const USERNAME = process.env.USERNAME || 'singhvarun74';
 
-const XP_PER_COMMIT = 10;
-const XP_PER_STAR = 5;
-const XP_PER_STREAK_DAY = 50;
-const XP_PER_LEVEL = 1000;
+const XP_CONFIG = {
+  COMMIT: 10,
+  STAR: 5,
+  STREAK_DAY: 7,
+  PR_MERGED: 20,
+  ISSUE_CLOSED: 15,
+  REPO_CREATED: 50,
+  NEXT_LEVEL: 1000
+};
 
 async function fetchGitHubStats() {
-  const headers = { Authorization: `token ${GITHUB_TOKEN}` };
+  try {
+    const headers = { Authorization: `token ${GITHUB_TOKEN}` };
 
-  // Fetch commit count
-  const commitsResponse = await axios.get(`https://api.github.com/search/commits?q=author:${USERNAME}`, {
-    headers: { ...headers, Accept: 'application/vnd.github.cloak-preview+json' }
-  });
-  const commitCount = commitsResponse.data.total_count;
+    const reposResponse = await axios.get(`https://api.github.com/users/${USERNAME}/repos`, { headers });
+    const totalStars = reposResponse.data.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
-  // Fetch stars received
-  const reposResponse = await axios.get(`https://api.github.com/users/${USERNAME}/repos`, { headers });
-  const totalStars = reposResponse.data.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+    const commitsResponse = await axios.get(`https://api.github.com/search/commits?q=author:${USERNAME}`, { headers });
+    const commitCount = commitsResponse.data.total_count || 0;
 
-  // Fetch current streak (simplified)
-  const contributionsResponse = await axios.get(`https://github.com/users/${USERNAME}/contributions`, { headers });
-  const streak = 7; // Placeholder, parse the actual streak from the response
+    const activityXP = commitCount * XP_CONFIG.COMMIT + totalStars * XP_CONFIG.STAR;
+    const level = Math.floor(activityXP / XP_CONFIG.NEXT_LEVEL);
+    const nextLevelXP = XP_CONFIG.NEXT_LEVEL * (level + 1);
 
-  // Calculate precision (simplified)
-  const precision = 85; // Placeholder, calculate based on merged PRs / total PRs
+    const svgTemplate = fs.readFileSync('solo-leveling-stats.svg', 'utf8');
+    const updatedSvg = svgTemplate.replace('{{LEVEL}}', level).replace('{{CURRENT_XP}}', activityXP).replace('{{NEXT_LEVEL_XP}}', nextLevelXP);
 
-  // Calculate activity score (simplified)
-  const activityScore = Math.min(100, (commitCount + totalStars) / 10);
-
-  // Calculate XP and level
-  const totalXP = (commitCount * XP_PER_COMMIT) + (totalStars * XP_PER_STAR) + (streak * XP_PER_STREAK_DAY);
-  const level = Math.floor(totalXP / XP_PER_LEVEL) + 1;
-  const currentLevelXP = totalXP % XP_PER_LEVEL;
-  
-  return {
-    level,
-    totalXP,
-    currentLevelXP,
-    nextLevelXP: XP_PER_LEVEL,
-    commitCount,
-    totalStars,
-    streak,
-    precision,
-    activityScore
-  };
+    fs.writeFileSync('solo-leveling-stats.svg', updatedSvg);
+  } catch (error) {
+    console.error('Error fetching GitHub stats:', error);
+  }
 }
 
-async function updateSVG(stats) {
-  let svgContent = await fs.readFile('./solo-leveling-stats.svg', 'utf8');
-  
-  const xpBarWidth = (stats.currentLevelXP / stats.nextLevelXP) * 700;
-  const commitsWidth = Math.min(stats.commitCount, 500) / 500 * 500;
-  const starsWidth = Math.min(stats.totalStars, 100) / 100 * 500;
-  const streakWidth = Math.min(stats.streak, 30) / 30 * 500;
-  const precisionWidth = stats.precision / 100 * 500;
-  const activityWidth = stats.activityScore / 100 * 500;
-
-  svgContent = svgContent
-    .replace('{{LEVEL}}', stats.level)
-    .replace('{{CURRENT_XP}}', stats.currentLevelXP)}
+fetchGitHubStats();

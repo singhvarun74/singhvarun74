@@ -77,3 +77,4 @@
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=100&section=footer&text=The%20Only%20Limit%20is%20the%20One%20You%20Set.&fontSize=24&fontColor=D2DFEB" width="100%" />
 </p>
+![Solo Leveling Stats](https://raw.githubusercontent.com/singhvarun74/singhvarun74/main/solo-leveling-stats.svg)

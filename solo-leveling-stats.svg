@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
   <style>
     @keyframes glitch {
       0% { transform: translate(0) }
@@ -8,15 +8,19 @@
       80% { transform: translate(2px, -2px) }
       100% { transform: translate(0) }
     }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
     .background { fill: #040509; }
-    .header { font: bold 24px 'Segoe UI', sans-serif; fill: #E2BEFF; }
-    .subheader { font: bold 16px 'Segoe UI', sans-serif; fill: #D2DFEB; }
-    .bar-bg { fill: #1B02A4; rx: 5; ry: 5; }
+    .header { font: bold 28px 'Segoe UI', sans-serif; fill: #E2BEFF; }
+    .subheader { font: bold 18px 'Segoe UI', sans-serif; fill: #D2DFEB; }
+    .bar-bg { fill: #1B02A4; opacity: 0.3; rx: 5; ry: 5; }
     .bar-fill { fill: url(#gradient); rx: 5; ry: 5; }
-    .icon { font-size: 18px; fill: #E2BEFF; }
     .glow { filter: url(#glow); }
-    .glitch { animation: glitch 2s infinite; }
-    text { font-family: 'Segoe UI', sans-serif; }
+    .glitch { animation: glitch 5s infinite; }
+    .pulse { animation: pulse 2s infinite; }
+    .stat-value { font: bold 16px 'Segoe UI', sans-serif; fill: #D2DFEB; text-anchor: end; }
   </style>
   
   <defs>
@@ -24,53 +28,44 @@
       <stop offset="0%" stop-color="#0043FF"/>
       <stop offset="100%" stop-color="#E2BEFF"/>
     </linearGradient>
-    
+
     <filter id="glow">
-      <feGaussianBlur stdDeviation="4.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#0043FF" flood-opacity="0.6" result="glow"/>
+      <feComposite in="glow" in2="blur" operator="in" result="coloredBlur"/>
+      <feComposite in="SourceGraphic" in2="coloredBlur" operator="over"/>
     </filter>
   </defs>
   
+  <!-- Background -->
   <rect class="background" width="100%" height="100%" />
 
-  <text x="50%" y="40" text-anchor="middle" class="header glow glitch">Level: {{LEVEL}}</text>
-  
-  <rect x="50" y="60" width="700" height="20" class="bar-bg"/>
-  <rect x="50" y="60" width="{{XP_BAR_WIDTH}}" height="20" class="bar-fill glow"/>
-  <text x="400" y="76" text-anchor="middle" class="subheader">XP: {{CURRENT_XP}} / {{NEXT_LEVEL_XP}}</text>
+  <!-- Main Title -->
+  <text x="50%" y="50" text-anchor="middle" class="header glitch">Level: {{LEVEL}}</text>
 
-  <text x="50" y="120" class="icon">💻</text>
-  <text x="80" y="120" class="subheader">Commits: {{COMMITS}}</text>
-  <rect x="250" y="105" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="105" width="{{COMMITS_WIDTH}}" height="15" class="bar-fill"/>
+  <!-- XP Bar -->
+  <text x="400" y="85" text-anchor="middle" class="subheader pulse">XP: {{CURRENT_XP}} / {{NEXT_LEVEL_XP}}</text>
+  <rect x="100" y="95" width="600" height="20" class="bar-bg"/>
+  <rect x="100" y="95" width="{{XP_BAR_WIDTH}}" height="20" class="bar-fill glow"/>
 
-  <text x="50" y="160" class="icon">⭐</text>
-  <text x="80" y="160" class="subheader">Stars: {{STARS}}</text>
-  <rect x="250" y="145" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="145" width="{{STARS_WIDTH}}" height="15" class="bar-fill"/>
+  <!-- Stats Section -->
+  <g transform="translate(0, 50)">
+    <text x="80" y="120" class="subheader">Activity:</text>
+    <rect x="250" y="105" width="400" height="15" class="bar-bg"/>
+    <rect x="250" y="105" width="{{ACTIVITY_WIDTH}}" height="15" class="bar-fill"/>
+    <text x="670" y="120" class="stat-value">+{{ACTIVITY_XP}}</text>
+    
+    <text x="80" y="160" class="subheader">Commits:</text>
+    <rect x="250" y="145" width="400" height="15" class="bar-bg"/>
+    <rect x="250" y="145" width="{{COMMITS_WIDTH}}" height="15" class="bar-fill"/>
+    <text x="670" y="160" class="stat-value">+{{COMMITS_XP}}</text>
 
-  <text x="50" y="200" class="icon">🔥</text>
-  <text x="80" y="200" class="subheader">Streak: {{STREAK}} days</text>
-  <rect x="250" y="185" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="185" width="{{STREAK_WIDTH}}" height="15" class="bar-fill"/>
+    <text x="80" y="200" class="subheader">Stars:</text>
+    <rect x="250" y="185" width="400" height="15" class="bar-bg"/>
+    <rect x="250" y="185" width="{{STARS_WIDTH}}" height="15" class="bar-fill"/>
+    <text x="670" y="200" class="stat-value">+{{STARS_XP}}</text>
+  </g>
 
-  <text x="50" y="240" class="icon">🎯</text>
-  <text x="80" y="240" class="subheader">Precision: {{PRECISION}}%</text>
-  <rect x="250" y="225" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="225" width="{{PRECISION_WIDTH}}" height="15" class="bar-fill"/>
-
-  <text x="50" y="280" class="icon">🧠</text>
-  <text x="80" y="280" class="subheader">Mana: ∞</text>
-  <rect x="250" y="265" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="265" width="500" height="15" class="bar-fill"/>
-
-  <text x="50" y="320" class="icon">🚀</text>
-  <text x="80" y="320" class="subheader">Activity: {{ACTIVITY_SCORE}}</text>
-  <rect x="250" y="305" width="500" height="15" class="bar-bg"/>
-  <rect x="250" y="305" width="{{ACTIVITY_WIDTH}}" height="15" class="bar-fill"/>
-
-  <text x="400" y="380" text-anchor="middle" class="header glow">Next Level: {{NEXT_LEVEL_XP}} XP</text>
+  <!-- Footer -->
+  <text x="400" y="380" text-anchor="middle" class="header glitch">Next Level: {{NEXT_LEVEL_XP}} XP</text>
 </svg>
